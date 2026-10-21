@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: radar-video-news-ai
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health

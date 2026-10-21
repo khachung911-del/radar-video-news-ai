@@ -1,0 +1,11 @@
+RADAR VIDEO NEWS AI - GÓI TRIỂN KHAI RENDER
+
+Cách dùng:
+1. Giải nén toàn bộ ZIP này.
+2. Tải toàn bộ file và thư mục bên trong lên một GitHub repository (không tải nguyên file ZIP vào repository).
+3. Trên Render, chọn New + > Web Service, kết nối repository GitHub.
+4. Runtime/Language: Docker; Instance Type: Free; Health Check Path: /api/health (nếu có trường này).
+5. Chọn Deploy Web Service và chờ Build/Deploy hoàn tất.
+6. Mở URL .onrender.com được Render cấp.
+
+Lưu ý: Render Free ngủ sau 15 phút không có truy cập và có thể mất dữ liệu trong thư mục làm việc khi ngủ/khởi động lại/triển khai lại. Tải video về ngay sau khi tạo. Gói này không tích hợp API AI để viết lại tin; chức năng biên tập hiện là bản nháp cơ bản. TTS cần kết nối Internet. Đây là bản thử nghiệm, chưa phù hợp để công khai dữ liệu nhạy cảm hoặc dùng cho sản xuất ổn định.
