@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đinh Hùng — Giữ hồn cốt cũ, kiến tạo giá trị mới</title>
+<meta name="description" content="Trang cá nhân của Đinh Hùng: người làm báo, nghiên cứu lịch sử vùng Đông Bắc và xây dựng tòa soạn nội dung số ứng dụng AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F1E7;--surface:#FFFDF8;--text:#1D1A16;--muted:#5E564B;--line:#D9CFBD;
+  --primary:#9B2C1F;--primary-hover:#822318;--on-primary:#FFFFFF;--accent:#2F5D57;
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:72px;--s9:112px;
+  --radius:2px;--width:1120px;--gutter:20px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#14110E;--surface:#1E1A15;--text:#EDE6D8;--muted:#B3A996;--line:#3A332A;
+    --primary:#E0705F;--primary-hover:#EA8676;--on-primary:#14110E;--accent:#7FB8AE;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);line-height:1.15;margin:0;font-weight:700;text-wrap:balance}
+p{margin:0 0 var(--s4);max-width:65ch}
+a{color:var(--primary);text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.wrap{max-width:var(--width);margin:0 auto;padding:0 var(--gutter)}
+.skip{position:absolute;left:-999px;top:0;background:var(--primary);color:var(--on-primary);padding:var(--s2) var(--s4);z-index:20}
+.skip:focus{left:var(--s2);top:var(--s2)}
+
+/* Điều hướng */
+.nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);min-height:56px}
+.brand{font:700 20px/1 var(--serif);color:var(--text);text-decoration:none}
+.nav ul{display:flex;gap:var(--s5);list-style:none;margin:0;padding:0;align-items:center}
+.nav li a{color:var(--text);text-decoration:none;font-size:14px;font-weight:500;padding:var(--s2) 0;display:inline-block}
+.nav li a:hover{color:var(--primary)}
+.nav li.hide-sm{display:none}
+@media (min-width:860px){.nav li.hide-sm{display:block}}
+
+/* Nút */
+.btn{display:inline-block;font:600 16px/1 var(--sans);padding:14px 22px;border-radius:var(--radius);border:1px solid var(--primary);background:var(--primary);color:var(--on-primary);text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--primary-hover);border-color:var(--primary-hover)}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--text)}
+.btn.ghost:hover{background:var(--text);color:var(--bg)}
+.btn.small{padding:10px 14px;font-size:14px}
+.nav li a.btn{color:var(--on-primary);padding:10px 14px}
+
+/* Mục */
+section{padding:var(--s8) 0}
+@media (min-width:860px){section{padding:var(--s9) 0}}
+.kicker{font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 var(--s3)}
+.rule{border:0;border-top:3px double var(--text);margin:0 0 var(--s5)}
+h2{font-size:clamp(28px,4vw,40px);margin-bottom:var(--s5)}
+.lead{font-size:18px;color:var(--muted)}
+
+/* Hero */
+.hero{padding-top:var(--s8)}
+.hero .grid{display:grid;gap:var(--s7)}
+@media (min-width:860px){.hero .grid{grid-template-columns:1.5fr 1fr;align-items:end}}
+.hero h1{font-size:clamp(40px,7vw,64px);margin-bottom:var(--s5)}
+.hero h1 em{font-style:italic;font-weight:600;color:var(--primary)}
+.hero .lead{margin-bottom:var(--s6)}
+.actions{display:flex;flex-wrap:wrap;gap:var(--s3)}
+.portrait{border:1px solid var(--line);background:var(--surface);aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--s3);padding:var(--s5);text-align:center;max-width:360px}
+.portrait .mono{font:700 96px/1 var(--serif);color:var(--primary)}
+.portrait small{color:var(--muted);font-size:14px}
+
+/* Ba trục */
+.axes{border-top:1px solid var(--line)}
+.axis{display:grid;gap:var(--s2) var(--s6);padding:var(--s5) 0;border-bottom:1px solid var(--line)}
+@media (min-width:860px){.axis{grid-template-columns:80px 1fr 1.6fr;align-items:baseline}}
+.num{font:600 28px/1 var(--serif);color:var(--primary);font-style:italic}
+.axis h3{font-size:22px}
+.axis p{margin:0;color:var(--muted)}
+
+/* Dự án */
+.projects{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.projects li{display:grid;gap:var(--s2) var(--s6);padding:var(--s5) 0;border-bottom:1px solid var(--line)}
+@media (min-width:860px){.projects li{grid-template-columns:80px 1.1fr 1.5fr 150px;align-items:baseline}}
+.projects h3{font-size:22px}
+.projects p{margin:0;color:var(--muted)}
+.tag{font-size:14px;font-weight:500;color:var(--accent);white-space:nowrap}
+
+/* Quy trình */
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:var(--s5);counter-reset:step}
+@media (min-width:640px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.steps{grid-template-columns:repeat(5,1fr);gap:var(--s5)}}
+.steps li{counter-increment:step;border-top:2px solid var(--text);padding-top:var(--s4)}
+.steps li::before{content:"Bước " counter(step);display:block;font-size:14px;font-weight:600;color:var(--primary);margin-bottom:var(--s2)}
+.steps h3{font-size:20px;margin-bottom:var(--s2)}
+.steps p{margin:0;color:var(--muted);font-size:15px}
+
+/* Kế hoạch 90 ngày */
+.focus{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.focus .grid{display:grid;gap:var(--s7)}
+@media (min-width:860px){.focus .grid{grid-template-columns:1fr 1.1fr}}
+.plan{border:1px solid var(--line);background:var(--bg);padding:var(--s5);border-radius:var(--radius)}
+label{display:block;font-size:14px;font-weight:600;margin-bottom:var(--s2)}
+select,input[type=text]{width:100%;font:400 16px/1.4 var(--sans);color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px;margin-bottom:var(--s4)}
+select:focus,input[type=text]:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 1px var(--primary)}
+fieldset{border:0;padding:0;margin:0 0 var(--s4)}
+legend{font-size:14px;font-weight:600;margin-bottom:var(--s2);padding:0}
+.commit{display:flex;gap:var(--s3);align-items:center;margin-bottom:var(--s2)}
+.commit input[type=checkbox]{width:22px;height:22px;flex:none;accent-color:var(--accent)}
+.commit input[type=text]{margin:0}
+.progress{height:8px;background:var(--line);border-radius:var(--radius);overflow:hidden;margin:var(--s2) 0 var(--s4)}
+.progress span{display:block;height:100%;width:0;background:var(--accent)}
+.status{font-size:14px;color:var(--muted);margin:0}
+.plan .actions{margin-top:var(--s4)}
+.hint{font-size:14px;color:var(--muted)}
+
+/* Tuyên ngôn */
+blockquote{margin:0;padding:0}
+blockquote p{font:600 clamp(22px,3.2vw,32px)/1.4 var(--serif);font-style:italic;max-width:34em}
+blockquote footer{color:var(--muted);font-size:16px;margin-top:var(--s4)}
+.creed{list-style:none;margin:var(--s6) 0 0;padding:0;display:grid;gap:var(--s3)}
+@media (min-width:860px){.creed{grid-template-columns:repeat(3,1fr);gap:var(--s6)}}
+.creed li{border-top:1px solid var(--line);padding-top:var(--s3);font-weight:500}
+
+/* Liên hệ */
+.contact dl{display:grid;gap:var(--s3) var(--s6);margin:var(--s5) 0 0}
+@media (min-width:640px){.contact dl{grid-template-columns:160px 1fr}}
+dt{font-weight:600}
+dd{margin:0;color:var(--muted)}
+.todo{border:1px dashed var(--primary);color:var(--primary);padding:2px 8px;font-size:14px;border-radius:var(--radius);display:inline-block}
+footer.site{border-top:3px double var(--text);padding:var(--s5) 0 var(--s7);font-size:14px;color:var(--muted)}
+footer.site .wrap{display:flex;flex-wrap:wrap;gap:var(--s3);justify-content:space-between}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Bỏ qua, tới nội dung chính</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Đinh Hùng</a>
+    <nav aria-label="Điều hướng chính">
+      <ul>
+        <li class="hide-sm"><a href="#ba-truc">Ba trục</a></li>
+        <li class="hide-sm"><a href="#du-an">Dự án</a></li>
+        <li class="hide-sm"><a href="#quy-trinh">Quy trình</a></li>
+        <li class="hide-sm"><a href="#90-ngay">Kế hoạch 90 ngày</a></li>
+        <li><a class="btn small" href="#lien-he">Liên hệ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top">
+  <div class="wrap grid">
+    <div>
+      <p class="kicker">Người làm báo · Nghiên cứu lịch sử · Khởi nghiệp nội dung số</p>
+      <h1>Giữ hồn cốt cũ,<br><em>kiến tạo giá trị mới.</em></h1>
+      <p class="lead">Tôi là Đinh Hùng. Tôi kể chuyện Quảng Ninh và vùng Đông Bắc bằng con mắt của người làm báo, lưu giữ ký ức địa phương như một người nghiên cứu, và dùng AI để dựng một tòa soạn nội dung số có quy trình.</p>
+      <div class="actions">
+        <a class="btn" href="#du-an">Xem sáu dự án</a>
+        <a class="btn ghost" href="#90-ngay">Kế hoạch 90 ngày</a>
+      </div>
+    </div>
+    <div class="portrait" role="img" aria-label="Khung giữ chỗ cho ảnh chân dung Đinh Hùng">
+      <span class="mono" aria-hidden="true">ĐH</span>
+      <small>Khung giữ chỗ — thay bằng ảnh chân dung thật</small>
+    </div>
+  </div>
+</section>
+
+<section id="ba-truc">
+  <div class="wrap">
+    <hr class="rule">
+    <p class="kicker">Ba trục phát triển</p>
+    <h2>Một người, ba việc theo đuổi lâu dài</h2>
+    <div class="axes">
+      <div class="axis">
+        <span class="num">01</span>
+        <h3>Truyền thông</h3>
+        <p>Kể chuyện, xây thương hiệu và kết nối cộng đồng. Tin thời sự viết nghiêm túc, tin địa phương viết gần gũi, và không bài nào đánh đổi sự thật lấy lượt xem.</p>
+      </div>
+      <div class="axis">
+        <span class="num">02</span>
+        <h3>Văn hóa, lịch sử</h3>
+        <p>Đình, miếu, lễ hội, phong tục và những nhân vật, sự kiện của vùng Đông Bắc. Một vùng đất đáng nhớ vì cảnh đẹp, và đáng nhớ hơn vì những câu chuyện con người nơi ấy để lại.</p>
+      </div>
+      <div class="axis">
+        <span class="num">03</span>
+        <h3>Công nghệ, kinh doanh</h3>
+        <p>AI, tự động hóa và công cụ dựng video được đưa vào quy trình để tăng năng suất. Công nghệ phục vụ người viết, giọng nói riêng của người viết thì giữ nguyên.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="du-an">
+  <div class="wrap">
+    <hr class="rule">
+    <p class="kicker">Hệ sinh thái truyền thông</p>
+    <h2>Sáu dự án, mỗi dự án một giọng riêng</h2>
+    <p class="lead">Mỗi thương hiệu có định vị, đối tượng và văn phong khác nhau.</p>
+    <ol class="projects">
+      <li>
+        <span class="num">01</span>
+        <h3>Quảng Ninh Ngày Mới</h3>
+        <p>Báo chí, thời sự, phân tích và phản ánh ở địa phương. Chú trọng tính xác thực, tính chính luận và quy trình biên tập.</p>
+        <span class="tag">Thời sự · Chính luận</span>
+      </li>
+      <li>
+        <span class="num">02</span>
+        <h3>Tin Tức Quảng Ninh 24/7</h3>
+        <p>Cập nhật đời sống, sự kiện, an ninh, xã hội và những vấn đề người dân quan tâm hằng ngày.</p>
+        <span class="tag">Tin nhanh</span>
+      </li>
+      <li>
+        <span class="num">03</span>
+        <h3>Hà Cối Nét Xưa</h3>
+        <p>Truyền thông người Hà Cối: ký ức địa phương, con người, văn hóa, lịch sử và sự kết nối cộng đồng.</p>
+        <span class="tag">Ký ức · Cộng đồng</span>
+      </li>
+      <li>
+        <span class="num">04</span>
+        <h3>Việt Nam Ngày Mới</h3>
+        <p>Truyền thông đại chúng thiên về cảm xúc, nghệ thuật và những câu chuyện tích cực.</p>
+        <span class="tag">Cảm hứng</span>
+      </li>
+      <li>
+        <span class="num">05</span>
+        <h3>Hồ Sơ Lịch Sử Bị Lãng Quên</h3>
+        <p>Kể chuyện lịch sử, phục dựng ký ức, khai thác những sự kiện, nhân vật và di sản ít được biết đến.</p>
+        <span class="tag">Lịch sử · Di sản</span>
+      </li>
+      <li>
+        <span class="num">06</span>
+        <h3>Radar Video News AI</h3>
+        <p>Ứng dụng AI vào sản xuất tin video: tiếp nhận nguồn tin, biên tập, lời dẫn, giọng đọc, phụ đề và dựng hình.</p>
+        <a class="tag" href="/">Mở công cụ</a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="quy-trinh">
+  <div class="wrap">
+    <hr class="rule">
+    <p class="kicker">Tòa soạn nội dung số</p>
+    <h2>Năm bước từ tư liệu thô tới bản tin phát hành</h2>
+    <ol class="steps">
+      <li><h3>Tiếp nhận</h3><p>Tin tức, hình ảnh, video, tài liệu gốc.</p></li>
+      <li><h3>Xác minh, biên tập</h3><p>Kiểm chứng nguồn, viết nội dung, dựng kịch bản. Không suy diễn, không thêm dữ kiện.</p></li>
+      <li><h3>Phân cảnh, duyệt</h3><p>Cấu trúc hình ảnh, thời lượng, lời dẫn. Người biên tập duyệt trước khi sản xuất.</p></li>
+      <li><h3>Sản xuất</h3><p>Giọng đọc AI, hình ảnh, dựng video và hậu kỳ.</p></li>
+      <li><h3>Phân phối</h3><p>Fanpage, Reels và các kênh truyền thông của từng thương hiệu.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="focus" id="90-ngay">
+  <div class="wrap grid">
+    <div>
+      <hr class="rule">
+      <p class="kicker">Rèn nghề</p>
+      <h2>Chín mươi ngày, một dự án</h2>
+      <p>Nhiều ý tưởng là điểm mạnh, và cũng là chỗ dễ phân tán sức. Bảng bên cạnh dành cho chính tôi: chọn một dự án, đặt một đích đến, giữ ba cam kết mỗi tuần.</p>
+      <p class="hint">Dữ liệu chỉ lưu trên trình duyệt này, không gửi đi đâu. Ô đánh dấu tự xóa khi sang tuần mới.</p>
+    </div>
+    <form class="plan" id="plan" autocomplete="off">
+      <label for="project">Dự án tập trung</label>
+      <select id="project">
+        <option value="">— Chọn một dự án —</option>
+        <option>Quảng Ninh Ngày Mới</option>
+        <option>Tin Tức Quảng Ninh 24/7</option>
+        <option>Hà Cối Nét Xưa</option>
+        <option>Việt Nam Ngày Mới</option>
+        <option>Hồ Sơ Lịch Sử Bị Lãng Quên</option>
+        <option>Radar Video News AI</option>
+      </select>
+      <label for="goal">Đích đến sau 90 ngày</label>
+      <input type="text" id="goal" maxlength="160" placeholder="Ví dụ: mỗi tuần phát hành ba bản tin video">
+      <fieldset>
+        <legend>Ba cam kết tuần này</legend>
+        <div class="commit"><input type="checkbox" id="c1" aria-label="Đã xong cam kết 1"><input type="text" id="t1" maxlength="120" aria-label="Cam kết 1" placeholder="Cam kết 1"></div>
+        <div class="commit"><input type="checkbox" id="c2" aria-label="Đã xong cam kết 2"><input type="text" id="t2" maxlength="120" aria-label="Cam kết 2" placeholder="Cam kết 2"></div>
+        <div class="commit"><input type="checkbox" id="c3" aria-label="Đã xong cam kết 3"><input type="text" id="t3" maxlength="120" aria-label="Cam kết 3" placeholder="Cam kết 3"></div>
+      </fieldset>
+      <div class="progress" role="progressbar" aria-label="Tiến độ 90 ngày" aria-valuemin="0" aria-valuemax="90" aria-valuenow="0" id="bar"><span></span></div>
+      <p class="status" id="status" aria-live="polite">Chọn dự án để bắt đầu đếm ngày.</p>
+      <div class="actions">
+        <button type="button" class="btn ghost small" id="reset">Bắt đầu lại từ đầu</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="tuyen-ngon">
+  <div class="wrap">
+    <hr class="rule">
+    <p class="kicker">Tuyên ngôn</p>
+    <blockquote>
+      <p>Tôi đón nhận công nghệ, kể cả trí tuệ nhân tạo, nhưng không đánh đổi tư duy độc lập, nhân cách và bản sắc cá nhân.</p>
+      <footer>— Đinh Hùng</footer>
+    </blockquote>
+    <ul class="creed">
+      <li>Làm nghề bằng cái tâm.</li>
+      <li>Làm việc bằng trí tuệ.</li>
+      <li>Làm người bằng nhân cách.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact" id="lien-he">
+  <div class="wrap">
+    <hr class="rule">
+    <p class="kicker">Liên hệ</p>
+    <h2>Có câu chuyện cần được kể lại?</h2>
+    <p class="lead">Tư liệu về Hà Cối, Quảng Hà và vùng Đông Bắc, đề xuất hợp tác truyền thông hay một nguồn tin cần kiểm chứng đều có thể gửi cho tôi.</p>
+    <dl>
+      <dt>Thư điện tử</dt><dd><span class="todo">Cần bổ sung địa chỉ công khai</span></dd>
+      <dt>Facebook</dt><dd><span class="todo">Cần bổ sung đường dẫn các fanpage</span></dd>
+      <dt>Khu vực</dt><dd>Quảng Ninh, Việt Nam</dd>
+    </dl>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Đinh Hùng</span>
+    <span>Giữ hồn cốt cũ, kiến tạo giá trị mới.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var KEY='dinhhung.plan90', DAY=86400000;
+  var $=function(id){return document.getElementById(id)};
+  var fields=['project','goal','t1','t2','t3'], checks=['c1','c2','c3'];
+  var state={};
+  try{state=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){state={}}
+
+  function weekOf(start){return Math.floor((Date.now()-start)/(7*DAY))}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+
+  function render(){
+    var bar=$('bar'), fill=bar.firstElementChild, status=$('status');
+    if(!state.project||!state.start){
+      fill.style.width='0';bar.setAttribute('aria-valuenow','0');
+      status.textContent='Chọn dự án để bắt đầu đếm ngày.';return;
+    }
+    var day=Math.min(90,Math.floor((Date.now()-state.start)/DAY)+1);
+    var done=checks.filter(function(c){return state[c]}).length;
+    fill.style.width=(day/90*100)+'%';
+    bar.setAttribute('aria-valuenow',String(day));
+    status.textContent=(day>=90?'Đã đủ 90 ngày':'Ngày '+day+'/90')+' với '+state.project+'. Tuần này xong '+done+'/3 cam kết.';
+  }
+
+  // Sang tuần mới thì xóa dấu tích, giữ nguyên nội dung cam kết
+  if(state.start&&state.week!==weekOf(state.start)){
+    checks.forEach(function(c){state[c]=false});state.week=weekOf(state.start);save();
+  }
+  fields.forEach(function(f){if(state[f])$(f).value=state[f]});
+  checks.forEach(function(c){$(c).checked=!!state[c]});
+
+  $('plan').addEventListener('input',function(){
+    var prev=state.project;
+    fields.forEach(function(f){state[f]=$(f).value});
+    checks.forEach(function(c){state[c]=$(c).checked});
+    if(state.project&&(!state.start||state.project!==prev)){state.start=Date.now();state.week=0}
+    if(!state.project){delete state.start}
+    save();render();
+  });
+  $('plan').addEventListener('submit',function(e){e.preventDefault()});
+  $('reset').addEventListener('click',function(){
+    if(!confirm('Xóa kế hoạch hiện tại và bắt đầu lại?'))return;
+    state={};try{localStorage.removeItem(KEY)}catch(e){}
+    $('plan').reset();render();$('project').focus();
+  });
+  $('year').textContent=new Date().getFullYear();
+  render();
+})();
+</script>
+</body>
+</html>

@@ -82,6 +82,10 @@ def editorial_draft(text, source, url):
 def index():
     return (BASE / "static" / "index.html").read_text(encoding="utf-8")
 
+@app.get("/dinh-hung", response_class=HTMLResponse)
+def dinh_hung():
+    return (BASE / "static" / "dinh-hung" / "index.html").read_text(encoding="utf-8")
+
 @app.get("/api/health")
 def health():
     return {"ok": True, "ffmpeg": get_ffmpeg(), "tts": True, "data_dir": str(DATA)}
